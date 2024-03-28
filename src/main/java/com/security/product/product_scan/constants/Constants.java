@@ -1,6 +1,12 @@
+/***********************************************************************
+ * Copyright (c) 2024
+ * owned by Hitesh Sardar
+ ***********************************************************************/
+
 package com.security.product.product_scan.constants;
 
 public class Constants {
+    private Constants(){}
     public static final String OPERATION_TYPE = "operationType";
     public static final String USER_ROLE = "userRole";
     public static final String ID = "id";

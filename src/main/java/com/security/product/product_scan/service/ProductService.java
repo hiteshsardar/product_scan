@@ -1,3 +1,8 @@
+/***********************************************************************
+ * Copyright (c) 2024
+ * owned by Hitesh Sardar
+ ***********************************************************************/
+
 package com.security.product.product_scan.service;
 
 import com.security.product.product_scan.constants.MessagesConstant;
@@ -14,11 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class ProductService {

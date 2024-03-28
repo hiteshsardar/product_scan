@@ -1,6 +1,12 @@
+/***********************************************************************
+ * Copyright (c) 2024
+ * owned by Hitesh Sardar
+ ***********************************************************************/
+
 package com.security.product.product_scan.constants;
 
 public class MessagesConstant {
+    private MessagesConstant(){}
     public static final String REFRESH_SUCCESS_MESSAGE = "Successfully Refreshed the token.";
     public static final String OPERATION_TYPE_NOT_FOUND_MESSAGE = "Operation type not found for the given token.";
     public static final String TOKEN_EXPIRE_TIME_MESSAGE = "30 min";

@@ -1,5 +1,9 @@
-package com.security.product.product_scan.config;
+/***********************************************************************
+ * Copyright (c) 2024
+ * owned by Hitesh Sardar
+ ***********************************************************************/
 
+package com.security.product.product_scan.config;
 
 import com.security.product.product_scan.service.UsersDetailsService;
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,13 @@
+/***********************************************************************
+ * Copyright (c) 2024
+ * owned by Hitesh Sardar
+ ***********************************************************************/
+
 package com.security.product.product_scan.utilities;
 
 
 public class ValidationUtils {
+    private ValidationUtils(){}
     public static boolean isEmptyString(String str) {
         return str == null || str.isEmpty() || str.isBlank();
     }

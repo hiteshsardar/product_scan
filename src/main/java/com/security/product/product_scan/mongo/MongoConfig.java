@@ -1,3 +1,8 @@
+/***********************************************************************
+ * Copyright (c) 2024
+ * owned by Hitesh Sardar
+ ***********************************************************************/
+
 package com.security.product.product_scan.mongo;
 
 import org.springframework.context.annotation.Configuration;
