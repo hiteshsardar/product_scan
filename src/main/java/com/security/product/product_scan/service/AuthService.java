@@ -105,13 +105,12 @@ public class AuthService {
         return response;
     }
 
-    private boolean isUserExits(String email) {
+    public boolean isUserExits(String email) {
         Query query = new Query();
         query.addCriteria(Criteria.where(Constants.EMAIL).is(email));
         Users user = mongoTemplate.findOne(query, Users.class);
         if (user == null)
             return false;
-        else return !ValidationUtils.isEmptyString(user.getEmail());
+        return !ValidationUtils.isEmptyString(user.getEmail());
     }
-
 }

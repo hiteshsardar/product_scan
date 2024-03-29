@@ -114,6 +114,10 @@ public class ProductService {
         return response;
     }
 
+    public List<Product> findAllProducts() {
+        return productRepo.findAll();
+    }
+
     private Users getUserDetails(String token){
         final String userEmail = jwtUtils.getUsernameFromToken(token);
         if (!ValidationUtils.isEmptyString(userEmail)) {

@@ -6,9 +6,12 @@
 package com.security.product.product_scan.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.security.product.product_scan.constants.Constants;
+import com.security.product.product_scan.constants.MessagesConstant;
 import com.security.product.product_scan.pojo.JwtAuthTokenPojo;
 import com.security.product.product_scan.service.JwtUtils;
 import com.security.product.product_scan.service.UsersDetailsService;
+import com.security.product.product_scan.utilities.ValidationUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -42,9 +45,12 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
-        if(authHeader == null || authHeader.isBlank()){
+        String uri = request.getRequestURI();
+        if(ValidationUtils.isEmptyString(authHeader) && (uri.equals(Constants.SIGN_IN_URI) || uri.contains(Constants.PUBLIC_URI))) {
             filterChain.doFilter(request, response);
             return;
+        } else if (ValidationUtils.isEmptyString(authHeader) && !uri.equals(Constants.SIGN_IN_URI) && !uri.contains(Constants.PUBLIC_URI)) {
+            returnError(response, MessagesConstant.INVALID_TOKEN);
         }
 
         try {
@@ -67,16 +73,20 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             }
             filterChain.doFilter(request, response);
         } catch (Exception ex) {
-            ObjectMapper mapper = new ObjectMapper();
-            Map<String, Object> errorDetails = new HashMap<>();
-            errorDetails.put("statusCode", 400);
-            errorDetails.put("error", ex.getMessage());
-
-            response.setStatus(HttpStatus.BAD_REQUEST.value());
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-
-            mapper.writeValue(response.getWriter(), errorDetails);
-            logger.error(ex.getMessage());
+            returnError(response, ex.getMessage());
         }
+    }
+
+    private void returnError(HttpServletResponse response, String errorMsg) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> errorDetails = new HashMap<>();
+        errorDetails.put("statusCode", 400);
+        errorDetails.put("error", errorMsg);
+
+        response.setStatus(HttpStatus.BAD_REQUEST.value());
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+
+        mapper.writeValue(response.getWriter(), errorDetails);
+        logger.error(errorMsg);
     }
 }

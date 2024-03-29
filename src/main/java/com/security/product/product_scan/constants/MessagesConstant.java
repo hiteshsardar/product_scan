@@ -7,11 +7,13 @@ package com.security.product.product_scan.constants;
 
 public class MessagesConstant {
     private MessagesConstant(){}
-    public static final String REFRESH_SUCCESS_MESSAGE = "Successfully Refreshed the token.";
     public static final String OPERATION_TYPE_NOT_FOUND_MESSAGE = "Operation type not found for the given token.";
-    public static final String TOKEN_EXPIRE_TIME_MESSAGE = "30 min";
     public static final String DUPLICATE_EMAIL_ERROR = "Email address is already registered with our system.";
 
+    // Token Messages
+    public static final String TOKEN_EXPIRE_TIME_MESSAGE = "30 min";
+    public static final String REFRESH_SUCCESS_MESSAGE = "Successfully Refreshed the token.";
+    public static final String INVALID_TOKEN = "Unauthorised user, please provide a valid token";
 
     //    User Messages
     public static final String INVALID_USER = "User is not valid to perform this request.";
