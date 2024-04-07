@@ -51,6 +51,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             return;
         } else if (ValidationUtils.isEmptyString(authHeader) && !uri.equals(Constants.SIGN_IN_URI) && !uri.contains(Constants.PUBLIC_URI)) {
             returnError(response, MessagesConstant.INVALID_TOKEN);
+            return;
         }
 
         try {
