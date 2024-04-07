@@ -26,7 +26,7 @@ public class FirstUserConfig implements CommandLineRunner {
     private final UserRepo userRepo;
     private final AuthService authService;
     private final PasswordEncoder passwordEncoder;
-    private final String userDirectory = System.getProperty("user.dir") + "/conf/user.json";
+    private final String userDirectory = System.getProperty("user.dir") + "/conf/first_user.json";
     public FirstUserConfig(UserRepo userRepo, AuthService authService, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.authService = authService;
